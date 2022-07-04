@@ -1,6 +1,6 @@
 # vendas_backend
 
-# # # Principais recursos implementados no projeto:
+# Principais recursos implementados no projeto:
 
 - API Restful
 
