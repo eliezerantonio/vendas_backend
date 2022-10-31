@@ -1,3 +1,5 @@
+/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import 'reflect-metadata';
 import express, { NextFunction, Request, Response } from 'express';
 import cors from 'cors';
@@ -26,6 +28,6 @@ app.use(
   },
 );
 
-app.listen(333, () => {
-  console.log('server startedt on port 3333');
+app.listen(3333, () => {
+  console.log('server started on port 3333');
 });
