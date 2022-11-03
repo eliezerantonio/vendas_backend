@@ -601,10 +601,10 @@ camelcase@^6.0.0:
   resolved "https://registry.yarnpkg.com/camelcase/-/camelcase-6.3.0.tgz#5685b95eb209ac9c0c177467778c9c84df58ba9a"
   integrity sha512-Gmy6FhYlCY7uOElZUSbxo2UCDH8owEk996gkbrpsgGtrJLM3J7jGxl9Ic7Qwwj4ivOE5AWZWRMecDdF7hqGjFA==
 
-celebrate@^13.0.4:
-  version "13.0.4"
-  resolved "https://registry.yarnpkg.com/celebrate/-/celebrate-13.0.4.tgz#0cf490e2aca5929ae067d2d64d6d5f93a9853ec8"
-  integrity sha512-gUtAjEtFyY9PvuuQJq1uyuF46gLetVZzyUKXBDBqqvgzCjTSfwXP8L+WcGt1NrLQvUxXdlzhFolW2Bt9DDEV+g==
+celebrate@^15.0.1:
+  version "15.0.1"
+  resolved "https://registry.yarnpkg.com/celebrate/-/celebrate-15.0.1.tgz#767fa6268f7446b473ea69cd6326ce4dffee4d1e"
+  integrity sha512-K2y221k10u+K2t9w25802qXh8h1mVWZf+6pl7zHdlhhwzrOSQFnnw+GsR8k17oyn4Y3fVErBGsO/+CeW8N7aRQ==
   dependencies:
     escape-html "1.0.3"
     joi "17.x.x"
