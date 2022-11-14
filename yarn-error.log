@@ -1,5 +1,5 @@
 Arguments: 
-  /opt/node-v16.14.2-linux-x64/bin/node /opt/node-v16.14.2-linux-x64/bin/yarn add -D@types/express-async-errors
+  /opt/node-v16.14.2-linux-x64/bin/node /opt/node-v16.14.2-linux-x64/bin/yarn add multer
 
 PATH: 
   /home/eliezer/anaconda3/bin:/opt/node-v16.14.2-linux-x64/bin:/home/eliezer/.config/composer/vendor/bin:/home/eliezer/flutter/bin:/opt/node-v16.14.2-linux-x64/bin:/home/eliezer/.config/composer/vendor/bin:/home/eliezer/flutter/bin:/home/eliezer/.local/bin:/home/eliezer/anaconda3/bin:/opt/node-v16.14.2-linux-x64/bin:/home/eliezer/.config/composer/vendor/bin:/home/eliezer/flutter/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/sbin:/usr/sbin:/home/eliezer/bin:/home/eliezer/Android/Sdk/tools:/home/eliezer/Android/Sdk/tools:/home/eliezer/Android/Sdk/platform-tools:/usr/lib/dart/bin:/home/eliezer/jdk-11.0.119/bin:/home/eliezer/.pub-cache/bin:/home/eliezer/bin:/home/eliezer/Android/Sdk/tools:/home/eliezer/Android/Sdk/tools:/home/eliezer/Android/Sdk/platform-tools:/home/eliezer/.pub-cache/bin:/usr/lib/dart/bin:/home/eliezer/jdk-11.0.119/bin:/home/eliezer/bin:/home/eliezer/Android/Sdk/tools:/home/eliezer/Android/Sdk/tools:/home/eliezer/Android/Sdk/platform-tools:/usr/lib/dart/bin:/home/eliezer/jdk-11.0.119/bin:/home/eliezer/.pub-cache/bin
@@ -14,17 +14,8 @@ Platform:
   linux x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/-a: Not found
-      at Request.params.callback [as _callback] (/opt/node-v16.14.2-linux-x64/lib/node_modules/yarn/lib/cli.js:66138:18)
-      at Request.self.callback (/opt/node-v16.14.2-linux-x64/lib/node_modules/yarn/lib/cli.js:140883:22)
-      at Request.emit (node:events:526:28)
-      at Request.<anonymous> (/opt/node-v16.14.2-linux-x64/lib/node_modules/yarn/lib/cli.js:141855:10)
-      at Request.emit (node:events:526:28)
-      at IncomingMessage.<anonymous> (/opt/node-v16.14.2-linux-x64/lib/node_modules/yarn/lib/cli.js:141777:12)
-      at Object.onceWrapper (node:events:645:28)
-      at IncomingMessage.emit (node:events:538:35)
-      at endReadableNT (node:internal/streams/readable:1345:12)
-      at processTicksAndRejections (node:internal/process/task_queues:83:21)
+  Error: getaddrinfo ENOTFOUND registry.yarnpkg.com
+      at GetAddrInfoReqWrap.onlookup [as oncomplete] (node:dns:71:26)
 
 npm manifest: 
   {
