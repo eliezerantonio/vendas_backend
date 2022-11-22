@@ -20,10 +20,10 @@ class SendForgotPasswordEmailService {
     }
     const token = await userTokenRepository.generate(user.id);
 
-    await EtherealMail.sendMail({
-      to: email,
-      body: `Solicitacao de redifinicao de senha recebida ${token}`,
-    });
+    // await EtherealMail.sendMail({
+    //   to: email,
+    //   body: `Solicitacao de redifinicao de senha recebida ${token?.token}`,
+    // });
   }
 }
 
