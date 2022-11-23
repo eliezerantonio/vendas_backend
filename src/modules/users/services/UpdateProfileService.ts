@@ -22,7 +22,7 @@ class UpdateProfileService {
   }: IRequest): Promise<User> {
     const usersRepository = getCustomRepository(UsersRepository);
 
-    const user = await usersRepository.findByEmail(user_id);
+    const user = await usersRepository.findByEmail(email);
 
     if (!user) {
       throw new AppError('User not found');
