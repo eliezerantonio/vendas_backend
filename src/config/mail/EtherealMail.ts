@@ -55,7 +55,7 @@ export default class EtherealMail {
       html: await mailTemplate.parse(templateData),
     });
 
-    console.log('Message Sent: %s', message.messageId);
-    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(message));
+    // console.log('Message Sent: %s', message.messageId);
+    // console.log('Preview URL: %s', nodemailer.getTestMessageUrl(message));
   }
 }
