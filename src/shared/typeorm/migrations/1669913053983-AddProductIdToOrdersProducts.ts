@@ -10,7 +10,7 @@ export class AddProductIdToOrdersProducts1669913053983
 {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.addColumn(
-      'orders_product',
+      'orders_products',
       new TableColumn({ name: 'product_id', type: 'uuid', isNullable: true }),
     );
 
