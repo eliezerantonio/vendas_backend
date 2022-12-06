@@ -1,6 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import 'reflect-metadata';
+import 'dotenv/config';
 import express, { NextFunction, Request, Response } from 'express';
 import 'express-async-errors';
 import cors from 'cors';
@@ -36,6 +37,6 @@ app.use(
   },
 );
 
-app.listen(3333, () => {
-  console.log('server started on port 3333');
+app.listen(process.env.APP_API_URL, () => {
+  console.log(`server started on port ${process.env.APP_API_UR}`);
 });
