@@ -2483,7 +2483,7 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha512-/aCDEGatGvZ2BIk+HmLf4ifCJFwvKFNb9/JeZPMulfgFracn9QFcAf5GO8B/mweUjSoblS5In0cWhqpfs/5PQA==
 
-typeorm-pagination@^2.0.1:
+typeorm-pagination@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/typeorm-pagination/-/typeorm-pagination-2.0.3.tgz#477a99817d168ba3f4cfa1ce3bd6edc10d08b1b6"
   integrity sha512-tXGelIYtkFPxJi8Q06MB5YKNskAzkUFwZyKYzZx7Uh3TE8Y9DrgjtFFHTNjVIHLuYOz1aE3MhGTlM9pDEi0hhg==
