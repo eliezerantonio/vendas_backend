@@ -37,6 +37,6 @@ app.use(
   },
 );
 
-app.listen(process.env.APP_API_URL, () => {
-  console.log(`server started on port ${process.env.APP_API_UR}`);
+app.listen(3333, () => {
+  console.log(`server started on port ${process.env.APP_API_URL}`);
 });
