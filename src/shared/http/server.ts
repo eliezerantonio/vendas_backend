@@ -11,11 +11,12 @@ import '@shared/typeorm';
 import uploadConfig from '@config/upload';
 import { errors } from 'celebrate';
 import { pagination } from 'typeorm-pagination';
-
+import ratelimiter from '@shared/http/middlewares/rateLimiter';
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(ratelimiter);
 
 app.use(pagination);
 app.use('/files', express.static(uploadConfig.directory));
