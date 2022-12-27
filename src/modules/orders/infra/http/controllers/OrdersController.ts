@@ -1,7 +1,7 @@
 import { privateEncrypt } from 'crypto';
 import { Request, Response } from 'express';
-import CreateOrderService from '../services/CreateOrderService';
-import ShowOrderService from '../services/ShowOrderService';
+import CreateOrderService from '../../../services/CreateOrderService';
+import ShowOrderService from '../../../services/ShowOrderService';
 
 export default class OrdersController {
   public async show(request: Request, response: Response): Promise<Response> {

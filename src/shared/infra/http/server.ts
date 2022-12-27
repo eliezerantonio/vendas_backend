@@ -7,11 +7,11 @@ import 'express-async-errors';
 import cors from 'cors';
 import routes from './routes';
 import AppError from '@shared/errors/AppError';
-import '@shared/typeorm';
+import '@shared/infra/http/typeorm';
 import uploadConfig from '@config/upload';
 import { errors } from 'celebrate';
 import { pagination } from 'typeorm-pagination';
-import ratelimiter from '@shared/http/middlewares/rateLimiter';
+import ratelimiter from '@shared/infra/http/middlewares/rateLimiter';
 const app = express();
 
 app.use(cors());
