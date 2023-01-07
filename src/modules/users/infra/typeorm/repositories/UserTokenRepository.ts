@@ -1,22 +1,31 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import { EntityRepository, Repository } from 'typeorm';
+import { IUserTokensRepository } from '@modules/users/domain/repositories/IUserTokensRepository';
+import { Repository, getRepository } from 'typeorm';
 import UserToken from '../entities/UserToken';
 
-@EntityRepository(UserToken)
-class UserTokenRepository extends Repository<UserToken> {
+class UserTokensRepository implements IUserTokensRepository {
+  private ormRepository: Repository<UserToken>;
+
+  constructor() {
+    this.ormRepository = getRepository(UserToken);
+  }
+
   public async findByToken(token: string): Promise<UserToken | undefined> {
-    const userToken = await this.findOne({ where: { token } });
+    const userToken = await this.ormRepository.findOne({
+      token,
+    });
 
     return userToken;
   }
 
   public async generate(user_id: string): Promise<UserToken> {
-    const userToken = await this.create({ user_id });
+    const userToken = this.ormRepository.create({
+      user_id,
+    });
 
-    await this.save(userToken);
+    await this.ormRepository.save(userToken);
 
     return userToken;
   }
 }
 
-export default UserTokenRepository;
+export default UserTokensRepository;

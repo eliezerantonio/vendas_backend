@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { inject, injectable } from 'tsyringe';
 import AppError from '@shared/errors/AppError';
 import { IDeleteCustomer } from '../domain/models/IDeleteCustomer';

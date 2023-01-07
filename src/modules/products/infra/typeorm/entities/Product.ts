@@ -1,12 +1,11 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import OrdersProducts from '@modules/orders/infra/typeorm/entities/OrdersProducts';
 import {
-  Entity,
   Column,
   CreateDateColumn,
+  Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-  OneToMany,
 } from 'typeorm';
 
 @Entity('products')

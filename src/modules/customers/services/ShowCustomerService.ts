@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import AppError from '@shared/errors/AppError';
 import Customer from '../infra/typeorm/entities/Customer';
 import { ICustomersRepository } from '../domain/repositories/ICustomersRepository';

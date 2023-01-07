@@ -1,43 +1,43 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { inject, injectable } from 'tsyringe';
+import redisCache from '@shared/RedisCache';
 import AppError from '@shared/errors/AppError';
-import RedisCache from '@shared/RedisCache';
-import { getCustomRepository } from 'typeorm';
-import Product from '../infra/typeorm/entities/Product';
-import { ProductsRepository } from '../infra/typeorm/repositories/ProductsRepository';
+import { IUpdateProduct } from '../domain/models/IUpdateProduct';
+import { IProductsRepository } from '../domain/repositories/IProductsRepository';
+import { IProduct } from '../domain/models/IProduct';
 
-interface IRequest {
-  id: string;
-  name: string;
-  price: number;
-  quantity: number;
-}
-
+@injectable()
 class UpdateProductService {
+  constructor(
+    @inject('ProductsRepository')
+    private productsRepository: IProductsRepository,
+  ) {}
+
   public async execute({
     id,
     name,
     price,
     quantity,
-  }: IRequest): Promise<Product> {
-    const productsRepository = getCustomRepository(ProductsRepository);
-    const product = await productsRepository.findOne(id);
+  }: IUpdateProduct): Promise<IProduct> {
+    const product = await this.productsRepository.findById(id);
 
     if (!product) {
-      throw new AppError('Product not found');
+      throw new AppError('Product not found.');
     }
 
-    const productExists = await productsRepository.findByName(name);
+    const productExists = await this.productsRepository.findByName(name);
 
-    if (productExists && name !== product.name) {
-      throw new AppError('There is already  one product with this name');
+    if (productExists) {
+      throw new AppError('There is already one product with this name');
     }
-    const redisCache = new RedisCache();
+
     await redisCache.invalidate('api-vendas-PRODUCT_LIST');
 
     product.name = name;
     product.price = price;
     product.quantity = quantity;
 
-    await productsRepository.save(product);
+    await this.productsRepository.save(product);
 
     return product;
   }
