@@ -4,7 +4,6 @@ import DeleteCusomerService from '../../../services/DeleteCustomerService';
 import ListCustomerService from '../../../services/ListCustomerService';
 import ShowCustomerService from '../../../services/ShowCustomerService';
 import UpdateCustomerService from '../../../services/UpdateCustomerService';
-import CustomersRepository from '../../typeorm/repositories/CustomersRepository';
 import { container } from 'tsyringe';
 
 export default class CustomersConteoller {
@@ -17,7 +16,7 @@ export default class CustomersConteoller {
 
   public async show(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
-    const showCustomer = new ShowCustomerService();
+    const showCustomer = container.resolve(ShowCustomerService);
 
     const customer = await showCustomer.execute({ id });
 
