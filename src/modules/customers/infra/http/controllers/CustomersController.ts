@@ -8,8 +8,11 @@ import { container } from 'tsyringe';
 
 export default class CustomersConteoller {
   public async index(request: Request, response: Response): Promise<Response> {
-    const listCusotmers = new ListCustomerService();
-    const customers = await listCusotmers.execute();
+    const page = request.query.page ? Number(request.query.page) : 1;
+    const limit = request.query.limit ? Number(request.query.limit) : 15;
+
+    const listCustomers = container.resolve(ListCustomerService);
+    const customers = await listCustomers.execute({ page, limit });
 
     return response.json(customers);
   }
@@ -37,7 +40,7 @@ export default class CustomersConteoller {
     const { name, email } = request.body;
     const { id } = request.params;
 
-    const updateCustomer = new UpdateCustomerService();
+    const updateCustomer = container.resolve(UpdateCustomerService);
 
     const customer = await updateCustomer.execute({ id, name, email });
 
