@@ -48,7 +48,7 @@ export default class CustomersConteoller {
   public async delete(request: Request, response: Response): Promise<Response> {
     const { id } = request.params;
 
-    const deleteCustomer = new DeleteCusomerService();
+    const deleteCustomer = container.resolve(DeleteCusomerService);
 
     await deleteCustomer.execute({ id });
 
