@@ -51,6 +51,7 @@
     "redis": "^4.5.1",
     "reflect-metadata": "^0.1.13",
     "ts-node": "^10.9.1",
+    "tsyringe": "^4.7.0",
     "typeorm": "^0.2.29",
     "typeorm-pagination": "^2.0.3"
   }
