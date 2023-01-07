@@ -1,31 +1,59 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-import Customer from '@modules/customers/infra/typeorm/entities/Customer';
-import { EntityRepository, Repository } from 'typeorm';
+import { Repository, getRepository } from 'typeorm';
 import Order from '../entities/Order';
-interface IProduct {
-  product_id: string;
-  price: number;
-  quantity: number;
-}
-interface IRequest {
-  customer: Customer;
-  products: IProduct[];
-}
+import { ICreateOrder } from '@modules/orders/domain/models/ICreateOrder';
+import { IOrdersRepository } from '@modules/orders/domain/repositories/IOrdersRepository';
+import { IOrderPaginate } from '@modules/orders/domain/models/IOrderPaginate';
 
-@EntityRepository(Order)
-class OrdersRepository extends Repository<Order> {
+type SearchParams = {
+  page: number;
+  skip: number;
+  take: number;
+};
+
+class OrdersRepository implements IOrdersRepository {
+  private ormRepository: Repository<Order>;
+
+  constructor() {
+    this.ormRepository = getRepository(Order);
+  }
+
   public async findById(id: string): Promise<Order | undefined> {
-    const order = this.findOne(id, {
+    const order = this.ormRepository.findOne({
+      where: { id },
       relations: ['order_products', 'customer'],
     });
 
     return order;
   }
 
-  public async createOrder({ customer, products }: IRequest): Promise<Order> {
-    const order = this.create({ customer, order_products: products });
+  public async findAll({
+    page,
+    skip,
+    take,
+  }: SearchParams): Promise<IOrderPaginate> {
+    const [orders, count] = await this.ormRepository
+      .createQueryBuilder()
+      .skip(skip)
+      .take(take)
+      .getManyAndCount();
 
-    await this.save(order);
+    const result = {
+      per_page: take,
+      total: count,
+      current_page: page,
+      data: orders,
+    };
+
+    return result;
+  }
+
+  public async create({ customer, products }: ICreateOrder): Promise<Order> {
+    const order = this.ormRepository.create({
+      customer,
+      order_products: products,
+    });
+
+    await this.ormRepository.save(order);
 
     return order;
   }
