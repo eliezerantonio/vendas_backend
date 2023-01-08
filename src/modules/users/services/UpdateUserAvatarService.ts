@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { inject, injectable } from 'tsyringe';
 import AppError from '@shared/errors/AppError';
 import uploadConfig from '@config/upload';
@@ -29,14 +30,14 @@ class UpdateUserAvatarService {
       if (user.avatar) {
         await s3Provider.deleteFile(user.avatar);
       }
-      const filename = await s3Provider.saveFile(avatarFilename);
+      const filename = await s3Provider.saveFile(avatarFilename || '');
       user.avatar = filename;
     } else {
       const diskProvider = new DiskStorageProvider();
       if (user.avatar) {
         await diskProvider.deleteFile(user.avatar);
       }
-      const filename = await diskProvider.saveFile(avatarFilename);
+      const filename = await diskProvider.saveFile(avatarFilename || '');
       user.avatar = filename;
     }
 
