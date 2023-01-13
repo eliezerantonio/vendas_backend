@@ -9,7 +9,11 @@ export type SearchParams = {
 };
 
 export interface ICustomersRepository {
-  findAll({ page, skip, take }: SearchParams): Promise<ICustomerPaginate>;
+  findAll({
+    page,
+    skip,
+    take,
+  }: SearchParams): Promise<ICustomerPaginate | undefined>;
 
   findByName(name: string): Promise<ICustomer | undefined>;
 

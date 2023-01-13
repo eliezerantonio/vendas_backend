@@ -7,10 +7,20 @@ import {
   SearchParams,
 } from '@modules/customers/domain/repositories/ICustomersRepository';
 import { ICreateCustomer } from '@modules/customers/domain/models/ICreateCustomer';
+import { ICustomer } from '../../models/ICustomer';
+import { ICustomerPaginate } from '../../models/ICustomerPaginate';
 
-class FakeCustomersRepository
-  implements Omit<ICustomersRepository, 'findAll' | 'remove'>
-{
+class FakeCustomersRepository implements ICustomersRepository {
+  findAll({
+    page,
+    skip,
+    take,
+  }: SearchParams): Promise<ICustomerPaginate | undefined> {
+    throw new Error('Method not implemented.');
+  }
+  remove(customer: ICustomer): Promise<void> {
+    throw new Error('Method not implemented.');
+  }
   private customers: Customer[] = [];
 
   public async create({ name, email }: ICreateCustomer): Promise<Customer> {
