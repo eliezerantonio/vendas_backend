@@ -31,25 +31,10 @@ class UsersRepository implements IUsersRepository {
     return user;
   }
 
-  public async findAll({
-    page,
-    skip,
-    take,
-  }: SearchParams): Promise<IPaginateUser> {
-    const [users, count] = await this.ormRepository
-      .createQueryBuilder()
-      .skip(skip)
-      .take(take)
-      .getManyAndCount();
+  public async findAll(): Promise<User[]> {
+    const users = await this.ormRepository.find();
 
-    const result = {
-      per_page: take,
-      total: count,
-      current_page: page,
-      data: users,
-    };
-
-    return result;
+    return users;
   }
 
   public async findByName(name: string): Promise<User | undefined> {
