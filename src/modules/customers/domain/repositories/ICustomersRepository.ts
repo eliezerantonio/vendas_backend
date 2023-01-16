@@ -13,13 +13,13 @@ export interface ICustomersRepository {
     page,
     skip,
     take,
-  }: SearchParams): Promise<ICustomerPaginate | undefined>;
+  }: SearchParams): Promise<ICustomerPaginate | null>;
 
-  findByName(name: string): Promise<ICustomer | undefined>;
+  findByName(name: string): Promise<ICustomer | null>;
 
-  findById(name: string): Promise<ICustomer | undefined>;
+  findById(name: string): Promise<ICustomer | null>;
 
-  findByEmail(name: string): Promise<ICustomer | undefined>;
+  findByEmail(name: string): Promise<ICustomer | null>;
 
   create(data: ICreateCustomer): Promise<ICustomer>;
 
